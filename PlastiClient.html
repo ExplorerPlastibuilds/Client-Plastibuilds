@@ -140,7 +140,225 @@
     .sc-monitor-row-value-editing .sc-monitor-row-value-outer {
       background-color: #e25b27;
     }
-    
+    <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- We only include this to explicitly loosen the CSP of various packager environments. It does not provide any security. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:">
+  <title>PlastiClient</title>
+  <style>
+    body {
+      color: #ffffff;
+      font-family: sans-serif;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    :root, body.is-fullscreen {
+      background-color: #000000;
+    }
+    [hidden] {
+      display: none !important;
+    }
+    h1 {
+      font-weight: normal;
+    }
+    a {
+      color: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    #app, #loading, #error, #launch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: default;
+      user-select: none;
+      -webkit-user-select: none;
+      background-color: #000000;
+    }
+    #launch {
+      background-color: rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+    }
+    .green-flag {
+      width: 80px;
+      height: 80px;
+      padding: 16px;
+      border-radius: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      border: 3px solid hsla(0, 100%, 100%, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    #loading {
+      
+    }
+    .progress-bar-outer {
+      border: 1px solid currentColor;
+      height: 10px;
+      width: 200px;
+      max-width: 200px;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      width: 0;
+      background-color: currentColor;
+    }
+    .loading-text, noscript {
+      font-weight: normal;
+      font-size: 36px;
+      margin: 0 0 16px;
+    }
+    .loading-image {
+      margin: 0 0 16px;
+    }
+    #error-message, #error-stack {
+      font-family: monospace;
+      max-width: 600px;
+      white-space: pre-wrap;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    #error-stack {
+      text-align: left;
+      max-height: 200px;
+      overflow: auto;
+    }
+    .control-button {
+      width: 2rem;
+      height: 2rem;
+      padding: 0.375rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+      border: 0;
+      border-radius: 4px;
+    }
+    .control-button:hover {
+      background: #ff4c4c26;
+    }
+    .control-button.active {
+      background: #ff4c4c59;
+    }
+    .fullscreen-button {
+      background: white !important;
+    }
+    .standalone-fullscreen-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0 0 0 4px;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .sc-canvas {
+      cursor: auto;
+    }
+    .sc-monitor-root[opcode^="data_"] .sc-monitor-value-color {
+      background-color: #ff8c1a;
+    }
+    .sc-monitor-row-value-outer {
+      background-color: #fc662c;
+    }
+    .sc-monitor-row-value-editing .sc-monitor-row-value-outer {
+      background-color: #e25b27;
+    }
+    .sc-monitor-list-label {
+    background-color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid hsl(0deg 0% 0% / 0%);
+    padding: 0;
+}
+.sc-monitor-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: hsl(0deg 0% 0% / 38%);
+    color: #575e75;
+    border: 1px solid hsl(0deg 0% 0% / 0%);
+    border-radius: 0px;
+    font-size: 12px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+}
+.sc-monitor-row-index {
+    font-weight: bold;
+    color: hsl(0deg 0% 100% / 0%);
+    margin: 0px;
+}
+.sc-monitor-row-value-outer {
+    background-color: #fc662c00;
+}
+.sc-monitor-row-value-inner {
+    padding: 3px 5px;
+    width: 100%;
+    color: inherit;
+    background: none;
+    border: none;
+    font: inherit;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: text;
+    -webkit-user-select: text;
+    white-space: pre;
+}
+.sc-monitor-row-value-outer {
+    border: 0px solid hsla(0, 0%, 0%, 0.15);
+}
+.sc-monitor-list-footer {
+    visibility: hidden;
+    display: flex;
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+.standalone-fullscreen-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(0 0 0);
+    border-radius: 15px;
+    padding: 4px;
+    cursor: pointer;
+}
+:root, body.is-fullscreen {
+    background-color: #000000;
+    background-image: url(https://plastibuilds.com/SiteImages/WebsiteBackgroundTest6.png);
+}
+.sc-context-menu {
+    visibility: hidden;
+
+}
+  </style>
+
   </style>
   <meta name="theme-color" content="#000000">
   
